@@ -25,7 +25,7 @@ html, body {
 
 body {
   font-family: "KaliUI", sans-serif;
-  background: url("./assets/login-wallpaper.png") center/cover no-repeat;
+  background: url("/assets/login-wallpaper.png") center/cover no-repeat;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
