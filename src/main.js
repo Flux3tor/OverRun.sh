@@ -26,7 +26,7 @@ container.id = "login-container";
 
 const avatar = document.createElement("img");
 avatar.id = "avatar";
-avatar.src = "/assets/kali-dragon.svg";
+avatar.src = "/assets/kali-dragon.png";
 
 container.appendChild(avatar);
 
