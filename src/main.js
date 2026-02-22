@@ -71,19 +71,44 @@ password.addEventListener("keydown", (e) => {
 });
 
 function startDesktop() {
-  document.body.innerHTML = "";
-  document.body.style.background = "black";
+  container.style.opacity = "0";
+  topbar.style.opacity = "0";
 
-  const desktop = document.createElement("div");
-  desktop.innerText = "Welcome to Kali Desktop";
-  desktop.style.color = "white";
-  desktop.style.fontSize = "24px";
-  desktop.style.position = "absolute";
-  desktop.style.top = "50%";
-  desktop.style.left = "50%";
-  desktop.style.transform = "translate(-50%, -50%)";
+  setTimeout(() => {
+    document.body.innerHTML = "";
 
-  document.body.appendChild(desktop);
+    document.body.style.background = "black";
+
+    const loading = document.createElement("div");
+    loading.innerText = "Starting session...";
+    loading.style.color = "white";
+    loading.style.position = "absolute";
+    loading.style.top = "50%";
+    loading.style.left = "50%";
+    loading.style.transform = "translate(-50%, -50%)";
+    loading.style.fontSize = "18px";
+
+    document.body.appendChild(loading);
+
+    setTimeout(() => {
+      document.body.innerHTML = "";
+      launchDesktop()
+    }, 1500);
+
+  }, 400);
+}
+
+function launchDesktop() {
+  document.body.style.background = 'url("./assets/kali-wallpaper.jpg") center/cover no-repeat';
+
+  const panel = document.createElement("div");
+  panel.style.position = "fixed";
+  panel.style.top = "0";
+  panel.style.width = "100%";
+  panel.style.height = "32px";
+  panel.style.background = "linear-gradient(to bottom, #2f4054, #2c3e50)";
+
+  document.body.appendChild(panel);
 }
 
 buttonRow.appendChild(cancelBtn);

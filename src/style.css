@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "KaliUI";
+  src: url("./assets/fonts/NotoSans-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "KaliUI";
+  src: url("./assets/fonts/NotoSans-Medium.ttf");
+  font-weight: 500;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +24,10 @@ html, body {
 }
 
 body {
-  background: url("/assets/login-wallpaper.png") center/cover no-repeat;
+  font-family: "KaliUI", sans-serif;
+  background: url("./assets/login-wallpaper.png") center/cover no-repeat;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #topbar {
@@ -25,7 +40,8 @@ body {
   justify-content: flex-end;
   align-items: center;
   padding: 0 25px;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
   color: #333;
 }
 
@@ -45,6 +61,8 @@ body {
   padding: 25px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.4);
   text-align: center;
+  font-size: 14px;
+  color: #2c2c2c;
 }
 
 #avatar {
@@ -60,6 +78,8 @@ body {
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
 }
 
 .button-row {
@@ -72,8 +92,9 @@ button {
   padding: 8px 16px;
   border-radius: 4px;
   border: none;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
+  font-weight: 500;
 }
 
 .cancel-btn {
