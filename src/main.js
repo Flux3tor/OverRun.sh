@@ -15,7 +15,7 @@ function updateDateTime() {
   const options = { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" };
   const formatted = now.toLocaleString("en-US", options);
 
-  topbarRight.innerText = 'US   ${formatted}';
+  topbarRight.innerText = `US   ${formatted}`;
 }
 
 setInterval(updateDateTime, 1000);
