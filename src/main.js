@@ -99,7 +99,7 @@ function startDesktop() {
 }
 
 function launchDesktop() {
-  document.body.style.background = 'url("/assets/kali-wallpaper.jpg") center/cover no-repeat';
+  document.body.style.background = 'url("./assets/kali-wallpaper.png") center/cover no-repeat';
 
   const panel = document.createElement("div");
   panel.style.position = "fixed";
