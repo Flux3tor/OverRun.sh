@@ -132,7 +132,7 @@ button {
 }
 
 @keyframes fadeIn {
-  from { opcaity: 0; transform: translate(-50%, -48%); }
+  from { opacity: 0; transform: translate(-50%, -48%); }
   to { opacity: 1; transform: translate(-50%, -50%); }
 }
 
