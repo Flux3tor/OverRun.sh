@@ -6,16 +6,32 @@ topbar.id = "topbar";
 const topbarRight = document.createElement("div");
 topbarRight.id = "topbar-right";
 
+const accessibilityIcon = document.createElement("div");
+accessibilityIcon.className = "topbar-icon";
+accessibilityIcon.innerText = "♿";
+
+const powerIcon = document.createElement("div");
+powerIcon.className = "topbar-icon";
+powerIcon.innerText = "Power";
+
+const dateTime = document.createElement("div");
+
+topbarRight.appendChild(accessibilityIcon);
+topbarRight.appendChild(powerIcon);
+topbarRight.appendChild(dateTime);
+
 topbar.appendChild(topbarRight);
 document.body.appendChild(topbar);
 
 function updateDateTime() {
   const now = new Date();
-
-  const options = { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" };
-  const formatted = now.toLocaleString("en-US", options);
-
-  topbarRight.innerText = `US   ${formatted}`;
+  const options = {
+    day: "2-digit",
+    month: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+  };
+  dateTime.innerText = `US   ${now.toLocaleString("en-US", options)}`;
 }
 
 setInterval(updateDateTime, 1000);
@@ -33,16 +49,17 @@ container.appendChild(avatar);
 const username = document.createElement("input");
 username.className = "input-field";
 username.placeholder = "Username";
-container.appendChild(username);
 
 const password = document.createElement("input");
 password.className = "input-field";
 password.placeholder = "Password";
 password.type = "password";
+
+container.appendChild(username);
 container.appendChild(password);
 
 const buttonRow = document.createElement("div");
-buttonRow.className = "button-row"
+buttonRow.className = "button-row";
 
 const cancelBtn = document.createElement("button");
 cancelBtn.className = "cancel-btn";
@@ -52,11 +69,21 @@ const loginBtn = document.createElement("button");
 loginBtn.className = "login-btn";
 loginBtn.innerText = "Log In";
 
+buttonRow.appendChild(cancelBtn);
+buttonRow.appendChild(loginBtn);
+container.appendChild(buttonRow);
+
 const errorMessage = document.createElement("div");
-errorMessage.style.color = "red";
-errorMessage.style.fontSize = "12px";
-errorMessage.style.marginTop = "8px";
+errorMessage.className = "error-message";
 container.appendChild(errorMessage);
+
+const devlogHint = document.createElement("div");
+devlogHint.className = "devlog-hint";
+devlogHint.innerHTML =
+  'ps: creds are in <a href="https://flavortown.hackclub.com/projects/14018" target="_blank">devlog #1</a>';
+container.appendChild(devlogHint);
+
+document.body.appendChild(container);
 
 loginBtn.addEventListener("click", () => {
   if (username.value === "Flux3tor" && password.value === "1247016") {
@@ -73,49 +100,51 @@ password.addEventListener("keydown", (e) => {
 });
 
 function startDesktop() {
-  container.style.opacity = "0";
-  topbar.style.opacity = "0";
+  document.body.style.transition = "opacity 0.4s ease";
+  document.body.style.opacity = "0";
 
   setTimeout(() => {
     document.body.innerHTML = "";
-
-    document.body.style.background = "black";
-
-    const loading = document.createElement("div");
-    loading.innerText = "Starting session...";
-    loading.style.color = "white";
-    loading.style.position = "absolute";
-    loading.style.top = "50%";
-    loading.style.left = "50%";
-    loading.style.transform = "translate(-50%, -50%)";
-    loading.style.fontSize = "18px";
-
-    document.body.appendChild(loading);
-
-    setTimeout(() => {
-      document.body.innerHTML = "";
-      launchDesktop()
-    }, 1500);
-
+    launchDesktop();
+    document.body.style.opacity = "1";
   }, 400);
 }
 
 function launchDesktop() {
-  document.body.style.background = 'url("./assets/kali-wallpaper.jpg") center/cover no-repeat';
+  document.body.style.background =
+    'url("./assets/kali-wallpaper.jpg") center/cover no-repeat';
 
   const panel = document.createElement("div");
-  panel.style.position = "fixed";
-  panel.style.top = "0";
-  panel.style.width = "100%";
-  panel.style.height = "32px";
-  panel.style.background = "linear-gradient(to bottom, #2f4054, #2c3e50)";
+  panel.id = "xfce-panel";
+
+  const panelLeft = document.createElement("div");
+  panelLeft.className = "panel-left";
+  panelLeft.innerText = "Applications";
+
+  const panelCenter = document.createElement("div");
+  panelCenter.className = "panel-center";
+
+  const panelRight = document.createElement("div");
+  panelRight.className = "panel-right";
+
+  const desktopClock = document.createElement("div");
+
+  panelRight.appendChild(desktopClock);
+
+  panel.appendChild(panelLeft);
+  panel.appendChild(panelCenter);
+  panel.appendChild(panelRight);
 
   document.body.appendChild(panel);
+
+  function updateDesktopClock() {
+    const now = new Date();
+    desktopClock.innerText = now.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+
+  setInterval(updateDesktopClock, 1000);
+  updateDesktopClock();
 }
-
-buttonRow.appendChild(cancelBtn);
-buttonRow.appendChild(loginBtn);
-
-container.appendChild(buttonRow)
-
-document.body.appendChild(container);

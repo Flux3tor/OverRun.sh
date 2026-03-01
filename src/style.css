@@ -1,12 +1,12 @@
 @font-face {
   font-family: "KaliUI";
-  src: url("/assets/fonts/NotoSans-Regular.ttf");
+  src: url("./assets/fonts/NotoSans-Regular.ttf");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "KaliUI";
-  src: url("/assets/fonts/NotoSans-Medium.ttf");
+  src: url("./assets/fonts/NotoSans-Medium.ttf");
   font-weight: 500;
 }
 
@@ -14,7 +14,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "KaliUI", sans-serif;
 }
 
 html, body {
@@ -24,8 +24,7 @@ html, body {
 }
 
 body {
-  font-family: "KaliUI", sans-serif;
-  background: url("/assets/login-wallpaper.png") center/cover no-repeat;
+  background: url("./assets/login-wallpaper.png") center/cover no-repeat;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -47,7 +46,12 @@ body {
 
 #topbar-right {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 15px;
+}
+
+.topbar-icon {
+  cursor: pointer;
 }
 
 #login-container {
@@ -59,33 +63,28 @@ body {
 
   background: rgba(255,255,255,0.85);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
   border-radius: 10px;
   padding: 28px;
   box-shadow: 0 10px 35px rgba(0,0,0,0.35);
-
   text-align: center;
+
+  animation: fadeIn 0.4s ease;
 }
 
 #avatar {
   width: 64px;
-  height: 64px;
-  margin: 0 auto 15px auto;
+  margin-bottom: 15px;
 }
 
 .input-field {
   width: 100%;
   padding: 10px 12px;
   margin: 10px 0;
-
   border-radius: 6px;
   border: 1px solid #cfcfcf;
-
   background: rgba(255,255,255,0.9);
   font-size: 14px;
-
-  transition: all 0.15 ease;
+  transition: all 0.15s ease;
 }
 
 .input-field:focus {
@@ -114,10 +113,6 @@ button {
   background: #d5d5d5;
 }
 
-.cancel-btn:hover {
-  background: #d5d5d5;
-}
-
 .login-btn {
   background: #3a7bd5;
   color: white;
@@ -127,8 +122,21 @@ button {
   background: #326dc0;
 }
 
-#login-container {
-  animation: fadeIn 0.4s ease;
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.devlog-hint {
+  font-size: 11px;
+  margin-top: 14px;
+  color: #777;
+}
+
+.devlog-hint a {
+  color: #555;
+  text-decoration: underline;
 }
 
 @keyframes fadeIn {
@@ -146,4 +154,25 @@ button {
   50% { transform: translate(-50%, -50%) translateX(6px); }
   75% { transform: translate(-50%, -50%) translateX(-4px); }
   100% { transform: translate(-50%, -50%) translateX(0); }
+}
+
+#xfce-panel {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 32px;
+  background: linear-gradient(to bottom, #2f4054, #2c3e50);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  color: #e6e6e6;
+  font-size: 13px;
+}
+
+.panel-left,
+.panel-center,
+.panel-right {
+  display: flex;
+  align-items: center;
 }
