@@ -1,12 +1,12 @@
 @font-face {
   font-family: "KaliUI";
-  src: url("./assets/fonts/NotoSans-Regular.ttf");
+  src: url("/assets/fonts/NotoSans-Regular.ttf");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "KaliUI";
-  src: url("./assets/fonts/NotoSans-Medium.ttf");
+  src: url("/assets/fonts/NotoSans-Medium.ttf");
   font-weight: 500;
 }
 
@@ -24,7 +24,7 @@ html, body {
 }
 
 body {
-  background: url("./assets/login-wallpaper.png") center/cover no-repeat;
+  background: url("/assets/login-wallpaper.png") center/cover no-repeat;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

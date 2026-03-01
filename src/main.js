@@ -112,7 +112,7 @@ function startDesktop() {
 
 function launchDesktop() {
   document.body.style.background =
-    'url("./assets/kali-wallpaper.jpg") center/cover no-repeat';
+    'url("/assets/kali-wallpaper.jpg") center/cover no-repeat';
 
   const panel = document.createElement("div");
   panel.id = "xfce-panel";
