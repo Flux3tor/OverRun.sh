@@ -133,67 +133,103 @@ function startDesktop(){
 
 function launchDesktop(){
 
-  document.body.style.background=
-  'url("./assets/kali-wallpaper.jpg") center/cover no-repeat';
+document.body.style.background =
+'url("./assets/kali-wallpaper.jpg") center/cover no-repeat';
 
-  const panel=document.createElement("div");
-  panel.id="xfce-panel";
+const panel = document.createElement("div");
+panel.id = "xfce-panel";
 
-  const panelLeft=document.createElement("div");
-  panelLeft.className="panel-left";
+const panelLeft = document.createElement("div");
+panelLeft.className = "panel-left";
 
-  const kaliIcon=document.createElement("img");
-  kaliIcon.src="./assets/kali-icon.png";
-  kaliIcon.className="panel-icon";
+const dragon = document.createElement("img");
+dragon.src = "./assets/icons/kali.svg";
+dragon.className = "launcher";
 
-  const workspaceContainer=document.createElement("div");
-  workspaceContainer.className="workspace-container";
+panelLeft.appendChild(dragon);
 
-  for(let i=1;i<=4;i++){
-    const ws=document.createElement("div");
-    ws.className="workspace";
-    ws.innerText=i;
-    workspaceContainer.appendChild(ws);
-  }
+const sep1 = document.createElement("div");
+sep1.className = "separator";
+panelLeft.appendChild(sep1);
 
-  panelLeft.appendChild(kaliIcon);
-  panelLeft.appendChild(workspaceContainer);
+const launchers = [
+"./assets/icons/terminal.svg",
+"./assets/icons/files.svg",
+"./assets/icons/firefox.svg"
+];
 
-  const panelCenter=document.createElement("div");
-  panelCenter.className="panel-center";
+launchers.forEach(icon=>{
+  const img=document.createElement("img");
+  img.src=icon;
+  img.className="launcher";
+  panelLeft.appendChild(img);
+});
 
-  const panelRight=document.createElement("div");
-  panelRight.className="panel-right";
+const sep2 = document.createElement("div");
+sep2.className = "separator";
+panelLeft.appendChild(sep2);
 
-  const network=document.createElement("img");
-  network.src="./assets/icons/network.svg";
-  network.className="panel-icon";
+const workspaceContainer = document.createElement("div");
+workspaceContainer.className = "workspace-container";
 
-  const volume=document.createElement("img");
-  volume.src="./assets/icons/volume.svg";
-  volume.className="panel-icon";
+for(let i=1;i<=4;i++){
 
-  const clock=document.createElement("span");
+const ws=document.createElement("div");
+ws.className="workspace";
+ws.innerText=i;
 
-  panelRight.appendChild(network);
-  panelRight.appendChild(volume);
-  panelRight.appendChild(clock);
+if(i===1) ws.classList.add("active");
 
-  panel.appendChild(panelLeft);
-  panel.appendChild(panelCenter);
-  panel.appendChild(panelRight);
+workspaceContainer.appendChild(ws);
 
-  document.body.appendChild(panel);
+}
 
-  function updateClock(){
-    const now=new Date();
+panelLeft.appendChild(workspaceContainer);
 
-    clock.innerText=now.toLocaleTimeString([],{
-      hour:"2-digit",
-      minute:"2-digit"
-    });
-  }
+const panelCenter = document.createElement("div");
+panelCenter.className = "panel-center";
 
-  setInterval(updateClock,1000);
-  updateClock();
+const panelRight = document.createElement("div");
+panelRight.className = "panel-right";
+
+const cpu = document.createElement("img");
+cpu.src="./assets/icons/cpu.svg";
+cpu.className="tray-icon";
+
+const net = document.createElement("img");
+net.src="./assets/icons/network.svg";
+net.className="tray-icon";
+
+const vol = document.createElement("img");
+vol.src="./assets/icons/volume.svg";
+vol.className="tray-icon";
+
+const clock = document.createElement("span");
+clock.className="clock";
+
+function updateClock(){
+
+const now=new Date();
+
+clock.innerText = now.toLocaleTimeString([],{
+hour:"2-digit",
+minute:"2-digit"
+});
+
+}
+
+setInterval(updateClock,1000);
+updateClock();
+
+panelRight.appendChild(cpu);
+panelRight.appendChild(net);
+panelRight.appendChild(vol);
+panelRight.appendChild(clock);
+
+panel.appendChild(panelLeft);
+panel.appendChild(panelCenter);
+panel.appendChild(panelRight);
+
+document.body.appendChild(panel);
+
 }
