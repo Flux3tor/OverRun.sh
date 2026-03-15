@@ -24,7 +24,7 @@ html,body {
 }
 
 body {
-  background: url("./assets/login-wallpaper.png") center/cover no-repeat;
+  background: url("/assets/login-wallpaper.png") center/cover no-repeat;
   -webkit-font-smoothing: antialiased;
 }
 
