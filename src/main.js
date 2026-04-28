@@ -956,12 +956,10 @@ function buildBrowser() {
     const url = normalizeUrl(raw);
     if (!url) { showOverlay(); urlBar.value = ""; return; }
 
-    const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(url);
-
     urlBar.value = url;
     currentUrl = url;
     hideOverlay();
-    frame.src = proxyUrl;
+    frame.src = url;
   }
 
   urlBar.addEventListener("keydown", e => { if (e.key === "Enter") navigate(urlBar.value); });
